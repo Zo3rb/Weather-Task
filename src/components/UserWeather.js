@@ -16,7 +16,7 @@ const UserWeather = ({ city }) => {
                     <h5>Your Current City Weather</h5>
                     <hr className="bg-white" />
                     <img
-                        src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+                        src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
                         style={{ width: 150, height: 150 }}
                         alt={city.weather[0].icon}
                     />
