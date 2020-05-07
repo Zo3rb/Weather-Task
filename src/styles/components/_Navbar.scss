@@ -1,0 +1,20 @@
+.nav {
+  a {
+    margin: 0 20px;
+  }
+  .active {
+    font-weight: bold;
+  }
+}
+
+// Make The Links Vertically on Specific Screens
+@media (min-width: 768px) {
+  .active {
+    text-decoration: underline;
+    border-left: solid 1px $mainColor;
+  }
+  .nav a {
+    writing-mode: vertical-rl;
+    margin: 10px 20px;
+  }
+}

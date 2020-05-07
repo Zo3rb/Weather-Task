@@ -1,0 +1,30 @@
+$backgroundColor: #2c3e50;
+$mainColor: #fff;
+
+// Some Personal Resets
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+// Main Styling for All Pages
+body {
+  background-color: $backgroundColor;
+  color: $mainColor;
+  font-family: "Ubuntu", sans-serif;
+}
+
+// Importing The Navbar Styles Here
+@import "./components/Navbar.scss";
+// Importing The 404 Page Styles Here
+@import "./components/NotFound.scss";
