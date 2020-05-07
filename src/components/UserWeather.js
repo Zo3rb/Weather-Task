@@ -3,10 +3,13 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 const UserWeather = ({ city }) => {
+
     useEffect(() => {
-        // Keep tracking The City
+        // As we Mentioned That The Root Page Will Re-render Several Times Before Finish Fetching The Location of The User , So We have To Watch This Property (City)
     }, [city])
+
     const renderWeather = () => {
+        // Every Time City Changes it Render Different City Dynamically
         if (city) {
             return (
                 <Col>
@@ -28,17 +31,21 @@ const UserWeather = ({ city }) => {
                 </Col>
             )
         }
+        // Could Replace it With GIF Later :)
         return (
             <p>Loading ...</p>
         )
     }
+
     return (
         <Container fluid>
             <Row className="text-center">
+                {/* Get The Final Rendered City and Inject it Here With The Helper Method */}
                 {renderWeather()}
             </Row>
             <Row>
                 <Col>
+                    {/* Costume Weather Search With City Name */}
                     <p className="warning text-center">
                         You Can Check Any Other City in The World By it's Name <Link to="/weather" className="text-primary">Here</Link>
                     </p>

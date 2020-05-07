@@ -4,9 +4,11 @@ import { UserWeather } from '../components';
 import axios from 'axios';
 
 const HomePage = () => {
+    // Declaring The Root Page States (City of The user by => Latitude & Longitude of Geolocation)
     const [city, setCity] = useState(null)
     const [lat, setLat] = useState(0)
     const [long, setLong] = useState(0)
+    // Once The App Load Successfully => Get Location of The User and Fetch its Weather
     useEffect(() => {
         (() => {
             navigator.geolocation.getCurrentPosition(position => {
@@ -20,6 +22,7 @@ const HomePage = () => {
             setCity(response.data)
         }
         getCurrentCity()
+        // Every Time Location Of The User Changed it Fetch New Data That's Because The Geolocation API Of The Browser Catch Latitude First > Then Longitude > That'll cause The Root Page ReRender 3 Times 
     }, [long, lat])
     return (
         <Fragment>
@@ -32,6 +35,7 @@ const HomePage = () => {
                 </Row>
                 <Row>
                     <Col>
+                        {/* Passing The Fetched Weather By The Location to UserWeather Component */}
                         <UserWeather city={city} />
                     </Col>
                 </Row>

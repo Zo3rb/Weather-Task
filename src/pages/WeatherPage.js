@@ -3,25 +3,32 @@ import { Container, Row, Col, Form, FormGroup, Input, Button } from 'reactstrap'
 import axios from 'axios';
 
 const WeatherPage = () => {
+
+    // Declaring Two States One For on-Time Changing State With Input Field And The Other to Search With to Avoid Searching Every Time The Input being Changed
     const [selectedCity, setSelectedCity] = useState("");
     const [respond, setRespond] = useState("");
-    // Searching Method Handler
+
+    // Searching Method Handler With The City (The Respond State) After User Submitting
     const fetchSearched = async city => {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=ff07332bf12d3744e1691a3180ed0b97`
         const response = await axios.get(url);
         return setRespond(response.data);
     }
 
+    // After The User Submit The Form WE Do Side Effect as a Call back in The Submit Handler
     const onSubmitHandler = e => {
         e.preventDefault();
         fetchSearched(selectedCity)
+        setSelectedCity("");
     }
 
-    // RenderHelper Method
+    // RenderHelper Method >> Always Keeping The JSX Looks Cleaner
     const renderSelectedCityWeather = () => {
+        // Return Nothing if There's No Respond or User Miss Spelled
         if (!respond) {
             return null
         }
+        // The Actual UI That Will be Rendered
         return (
             <Col>
                 <h5>Your Searched City Weather</h5>
@@ -44,6 +51,7 @@ const WeatherPage = () => {
     }
 
     return (
+        // Reactstrap Markup (Form And the Helper Method)
         <Container fluid>
             <Row className="py-1">
                 <Col className="text-center">
@@ -63,7 +71,14 @@ const WeatherPage = () => {
                                 value={selectedCity}
                                 onChange={e => setSelectedCity(e.target.value)}
                             />
-                            <Button className="w-25 my-2 rounded-0" color="primary">Find</Button>
+                            <Button
+                                className="w-25 my-2 rounded-0"
+                                color="primary"
+                                type="submit"
+                                disabled={!selectedCity}
+                            >
+                                Find
+                            </Button>
                         </FormGroup>
                     </Form>
                 </Col>

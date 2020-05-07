@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const NotFound = () => {
     return (
+        // Grabbed It Fast From Code Pen
         <div id="mainC" className="pt-5 mt-5">
             <div className="message mt-5 pt-5">
                 <h1>404</h1>
