@@ -16,4 +16,4 @@ npm run start
 ```
 code .
 ```
-#### Have Fun With The VSCode Editor
+#### Happy Hacking :)
