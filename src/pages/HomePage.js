@@ -17,7 +17,7 @@ const HomePage = () => {
             })
         })()
         const getCurrentCity = async () => {
-            const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=ff07332bf12d3744e1691a3180ed0b97`
+            const url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=ff07332bf12d3744e1691a3180ed0b97`
             const response = await axios.get(url)
             setCity(response.data)
         }
